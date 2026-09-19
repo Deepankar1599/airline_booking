@@ -25,7 +25,7 @@ models:
         data_tests:
           - not_null
         
-  - name: passenger_silver
+  - name: passengers_silver
     columns:
       - name: passenger_id
         data_tests:
