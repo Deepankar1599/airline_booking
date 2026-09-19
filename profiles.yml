@@ -1,0 +1,11 @@
+airline_booking_project:
+  outputs:
+    dev:
+      catalog: airflow_project
+      host: "dbc-0de9192d-83be.cloud.databricks.com"
+      http_path: "/sql/1.0/warehouses/14840cf39f14531c"
+      schema: default
+      threads: 1
+      token: "{{ env_var('databricks_token') }}"
+      type: databricks
+  target: dev

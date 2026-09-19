@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: source
+    database: airflow_project  
+    schema: bronze  
+    tables:
+      - name: bookings
+      - name: passengers
+      - name: airports
+
+

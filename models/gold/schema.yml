@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: fct_bookings
+    description: "Booking-grain fact table joining bookings with airport and passenger silver tables"
+    columns:
+      - name: booking_id
+        tests:
+          - unique
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: booking_date
+        tests:
+          - not_null
+      - name: processed_at
+        tests:
+          - not_null
+      - name: airport_id
+        tests:
+          - relationships:
+              to: source('source', 'airports')
+              field: airport_id
+      - name: passenger_id
+        tests:
+          - relationships:
+              to: source('source', 'passengers')
+              field: passenger_id
+      - name: has_valid_airport
+        tests:
+          - accepted_values:
+              values: [true, false]
+      - name: has_valid_passenger
+        tests:
+          - accepted_values:
+              values: [true, false]
+
+  - name: daily_booking_summary
+    description: "Daily aggregated booking metrics by airport"
+    columns:
+      - name: booking_date
+        tests:
+          - not_null
+      - name: airport_id
+        tests:
+          - not_null
+      - name: booking_count
+        tests:
+          - not_null
+      - name: total_amount
+        tests:
+          - not_null
+      - name: avg_amount
+        tests:
+          - not_null
