@@ -20,22 +20,26 @@ models:
       - name: airport_id
         tests:
           - relationships:
-              to: source('source', 'airports')
-              field: airport_id
+              arguments:
+                to: source('source', 'airports')
+                field: airport_id
       - name: passenger_id
         tests:
           - relationships:
-              to: source('source', 'passengers')
-              field: passenger_id
+              arguments:
+                to: source('source', 'passengers')
+                field: passenger_id
       - name: has_valid_airport
         tests:
           - accepted_values:
-              values: [true, false]
+              arguments:
+                values: [true, false]
       - name: has_valid_passenger
         tests:
           - accepted_values:
-              values: [true, false]
-
+              arguments:
+                values: [true, false]
+                
   - name: daily_booking_summary
     description: "Daily aggregated booking metrics by airport"
     columns:
